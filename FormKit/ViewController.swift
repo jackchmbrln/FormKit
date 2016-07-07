@@ -55,5 +55,8 @@ class ViewController: UIViewController {
         self.formView.addSection(FKFormSection(sectionName: "", fields: [addressField, addressField, addressField, addressField, addressField]))
     }
 
+    @IBAction func changeFieldValue(sender: AnyObject) {
+        self.formView.disableField(forIndexPath: NSIndexPath(forRow: 1, inSection: 0))
+    }
 }
 

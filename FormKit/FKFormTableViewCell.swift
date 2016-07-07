@@ -25,6 +25,12 @@ class FKFormTableViewCell: UITableViewCell {
     var delegate: FKFormTableViewCellDelegate?
     
     var indexPath: NSIndexPath!
+    
+    var disabled = false {
+        didSet {
+            self.switchState()
+        }
+    }
 
     // MARK: INIT
     
@@ -56,7 +62,6 @@ class FKFormTableViewCell: UITableViewCell {
     // MARK: Set appearance
     
     private func setAppearance() -> Void {
-        self.backgroundColor = UIColor.redColor()
         self.selectionStyle = .None
     }
     
@@ -79,8 +84,20 @@ class FKFormTableViewCell: UITableViewCell {
     
     internal func setCell(withField field: FKFormField) -> Void {
         self.field = field
-        self.textField.text = field.value
         self.textField.placeholder = field.placeholder
+        self.textField.text = field.value
+    }
+    
+    // MARK: Switch cell state
+    
+    internal func switchState() {
+        if self.disabled {
+            self.userInteractionEnabled = false
+            self.textField.alpha = 0.6
+        } else {
+            self.userInteractionEnabled = true
+            self.textField.alpha = 1.0
+        }
     }
 
 }

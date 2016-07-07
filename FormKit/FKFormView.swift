@@ -10,11 +10,16 @@ import UIKit
 
 public class FKFormView: UIView {
     
+    // TODO: Specify return button
+    
     // MARK: Definitions
     
     // Form sections
     
     public var sections: Array<FKFormSection>?
+    
+    // MARK: Modifiers
+    // A list of variables that can be set to alter the behaviour of the form
     
     public var autoReturn = true
     
@@ -41,10 +46,17 @@ public class FKFormView: UIView {
             return array
         }
     }
+    
+    // MARK: Private variables
 
     // Table view
     
     private var tableView: UITableView!
+    
+    // Disabled cells
+    // Maintains an array of all cells that are disabled
+    
+    private var disabledCells: [NSIndexPath]?
     
     // MARK: Optional init
     // Initialise a new FKFormView and return it
@@ -136,6 +148,14 @@ extension FKFormView: UITableViewDataSource {
         cell.indexPath = indexPath
         cell.delegate = self
         
+        if let disabled = self.disabledCells {
+            if disabled.contains(indexPath) {
+                cell.disabled = true
+            } else {
+                cell.disabled = false
+            }
+        }
+        
         return cell
     }
     
@@ -165,6 +185,47 @@ extension FKFormView: UITableViewDataSource {
         return 35.0
     }
     
+    // TODO: Change text
+    
+    // MARK: Change text for cell
+    // Supply the index path of the cell that needs to be altered
+    
+    public func changeValue(forIndexPath indexPath: NSIndexPath, newValue: String) {
+        self.sections?[indexPath.section].fields?[indexPath.row].value = newValue
+        guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? FKFormTableViewCell else { return }
+        cell.textField.text = newValue
+    }
+    
+    // TODO: Enable cell
+    
+    // MARK: Enable cell
+    
+    public func enableField(forIndexPath indexPath: NSIndexPath) {
+        guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? FKFormTableViewCell else { return }
+        cell.disabled = false
+        
+        if self.disabledCells != nil {
+            self.disabledCells!.removeObject(indexPath)
+        }
+        
+        return
+    }
+    
+    // TODO: Disable cell
+    
+    // MARK: Disable cell
+    
+    public func disableField(forIndexPath indexPath: NSIndexPath) {
+        guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? FKFormTableViewCell else { return }
+        cell.disabled = true
+        
+        if self.disabledCells != nil {
+            self.disabledCells!.append(indexPath)
+        } else {
+            self.disabledCells = [indexPath]
+        }
+    }
+    
 }
 
 // MARK: FKFormFieldTableViewCellDelegate 
@@ -178,3 +239,17 @@ extension FKFormView: FKFormTableViewCellDelegate {
 }
 
 extension FKFormView: UITableViewDelegate {}
+
+// MARK: Remove object from array
+
+
+extension RangeReplaceableCollectionType where Generator.Element : Equatable {
+    
+    // Remove first collection element that is equal to the given `object`:
+    mutating func removeObject(object : Generator.Element) {
+        if let index = self.indexOf(object) {
+            self.removeAtIndex(index)
+        }
+    }
+    
+}
