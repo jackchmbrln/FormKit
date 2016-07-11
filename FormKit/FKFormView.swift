@@ -47,6 +47,17 @@ public class FKFormView: UIView {
         }
     }
     
+    // MARK: Form view style
+    // Defines any custom styling for the font if it is set by the user
+    // Otherwise it will just revert to default values
+    // Refresh the table view when a new style is set
+    
+    public var style = FKFormFieldStyle() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: Private variables
 
     // Table view
@@ -147,6 +158,7 @@ extension FKFormView: UITableViewDataSource {
         cell.setCell(withField: fkField)
         cell.indexPath = indexPath
         cell.delegate = self
+        cell.applyStyle(self.style)
         
         if let disabled = self.disabledCells {
             if disabled.contains(indexPath) {

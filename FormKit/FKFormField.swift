@@ -38,6 +38,10 @@ public struct FKFormField {
     public var completion: FKFormFieldCompletion?
     public var frame: CGRect?
     
+    // Sepcify the type of return key that you want to have 
+    
+    public var returnKeyType: UIReturnKeyType?
+    
     // MARK: Framework exclusive variables
     // Variables here are not available to anyone importing the framework
     // They are only available to be used by the framework

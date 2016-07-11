@@ -20,6 +20,7 @@
 		0423C6AC1D26FFE400AC9E10 /* FKFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423C6AB1D26FFE400AC9E10 /* FKFormTableViewCell.swift */; };
 		04280C4D1D287D1300D51A3C /* FKNamedHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04280C4C1D287D1300D51A3C /* FKNamedHeaderTableViewCell.swift */; };
 		04280C4F1D28811200D51A3C /* FKFormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04280C4E1D28811200D51A3C /* FKFormSection.swift */; };
+		0484622A1D2F1A6A0053DE67 /* FKFormFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048462291D2F1A6A0053DE67 /* FKFormFieldStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0423C6AB1D26FFE400AC9E10 /* FKFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKFormTableViewCell.swift; sourceTree = "<group>"; };
 		04280C4C1D287D1300D51A3C /* FKNamedHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKNamedHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		04280C4E1D28811200D51A3C /* FKFormSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKFormSection.swift; sourceTree = "<group>"; };
+		048462291D2F1A6A0053DE67 /* FKFormFieldStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKFormFieldStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				0423C6A71D26FA0400AC9E10 /* FKFormField.swift */,
 				04280C4E1D28811200D51A3C /* FKFormSection.swift */,
 				04280C491D287CE300D51A3C /* Cells */,
+				048462291D2F1A6A0053DE67 /* FKFormFieldStyle.swift */,
 			);
 			name = FKFormView;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				04280C4D1D287D1300D51A3C /* FKNamedHeaderTableViewCell.swift in Sources */,
 				0423C6771D26F8B400AC9E10 /* AppDelegate.swift in Sources */,
 				0423C6A51D26F90300AC9E10 /* FKFormView.swift in Sources */,
+				0484622A1D2F1A6A0053DE67 /* FKFormFieldStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,6 +53,10 @@ class ViewController: UIViewController {
         self.formView.addSection(section)
         
         self.formView.addSection(FKFormSection(sectionName: "", fields: [addressField, addressField, addressField, addressField, addressField]))
+        
+        var style = FKFormFieldStyle()
+        style.textColor = UIColor.redColor()
+        self.formView.style = style
     }
 
     @IBAction func changeFieldValue(sender: AnyObject) {

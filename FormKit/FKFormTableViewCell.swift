@@ -86,6 +86,17 @@ class FKFormTableViewCell: UITableViewCell {
         self.field = field
         self.textField.placeholder = field.placeholder
         self.textField.text = field.value
+        if let returnType = field.returnKeyType {
+            self.textField.returnKeyType = returnType
+        }
+    }
+    
+    // MARK: Apple style to cell
+    // Apply custom or default styling to the cell from the FKFormFieldStyle struct
+    
+    internal func applyStyle(style: FKFormFieldStyle) {
+        self.textField.font = style.textFieldFont
+        self.textField.textColor = style.textColor
     }
     
     // MARK: Switch cell state
