@@ -9,6 +9,8 @@
 import UIKit
 
 // MARK: Line style
+// Enum that defines the style of underline for a cell
+// Default is Default
 
 public enum FKFieldLineStyle {
     

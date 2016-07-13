@@ -12,6 +12,8 @@ public class FKFormView: UIView {
     
     // TODO: Specify return button
     
+    // TODO: Figure out and write way of allowing users to add custom cells with custom actions
+    
     // MARK: Definitions
     
     // Form sections
@@ -54,7 +56,7 @@ public class FKFormView: UIView {
     
     public var style = FKFormFieldStyle() {
         didSet {
-            self.tableView.reloadData()
+            self.reloadForm()
         }
     }
     
@@ -90,20 +92,20 @@ public class FKFormView: UIView {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        self.createTableView()
+        self.buildTableView()
     }
     
     // MARK: Draw rect
     
     override public func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        self.createTableView()
+        self.buildTableView()
     }
     
     // MARK: Create table view
     // Initialise the table view and add it to the view
     
-    private func createTableView() -> Void {
+    private func buildTableView() -> Void {
         self.tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
         self.tableView.register(FKFormTableViewCell)
         self.tableView.register(FKNamedHeaderTableViewCell)
@@ -197,8 +199,6 @@ extension FKFormView: UITableViewDataSource {
         return 35.0
     }
     
-    // TODO: Change text
-    
     // MARK: Change text for cell
     // Supply the index path of the cell that needs to be altered
     
@@ -207,8 +207,6 @@ extension FKFormView: UITableViewDataSource {
         guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? FKFormTableViewCell else { return }
         cell.textField.text = newValue
     }
-    
-    // TODO: Enable cell
     
     // MARK: Enable cell
     
@@ -223,8 +221,6 @@ extension FKFormView: UITableViewDataSource {
         return
     }
     
-    // TODO: Disable cell
-    
     // MARK: Disable cell
     
     public func disableField(forIndexPath indexPath: NSIndexPath) {
@@ -236,6 +232,13 @@ extension FKFormView: UITableViewDataSource {
         } else {
             self.disabledCells = [indexPath]
         }
+    }
+    
+    // MARK: Reload form
+    // Reload the entire form
+    
+    public func reloadForm() {
+        self.tableView.reloadData()
     }
     
 }
